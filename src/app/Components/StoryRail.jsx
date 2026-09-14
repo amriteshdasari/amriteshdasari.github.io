@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'motion/react';
 import { usePathname } from 'next/navigation';
 
 const CHAPTERS = [
@@ -46,7 +46,7 @@ const StoryRail = () => {
     <>
       {/* Reading progress */}
       <motion.div
-        className="fixed top-0 left-0 right-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-accent-secondary via-accent-primary to-accent-primary"
+        className="fixed top-0 left-0 right-0 z-60 h-[2px] origin-left bg-linear-to-r from-accent-secondary via-accent-primary to-accent-primary"
         style={{ scaleX: progress }}
         aria-hidden="true"
       />
@@ -72,7 +72,7 @@ const StoryRail = () => {
                     aria-label={`${label} — chapter ${num}`}
                   >
                     <span
-                      className={`font-mono text-[10px] tracking-[0.2em] uppercase transition-all duration-300 ${
+                      className={`font-mono text-[10px] tracking-widest uppercase transition-all duration-300 ${
                         isActive
                           ? 'text-accent-primary opacity-100'
                           : 'text-text-tertiary opacity-0 group-hover:opacity-100'

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import { EASE, fadeDown, stagger } from '../lib/animations';
 

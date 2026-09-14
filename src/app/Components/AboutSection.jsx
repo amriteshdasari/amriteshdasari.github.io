@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import ChapterHeading from './ChapterHeading';
 import { fadeUp, slideLeft, stagger, VIEWPORT } from '../lib/animations';
 
@@ -72,7 +72,7 @@ const AboutSection = () => {
               <p className="font-display text-xl italic leading-relaxed text-text-primary sm:text-2xl">
                 Every reliable system is a story of failures handled gracefully.
               </p>
-              <footer className="mt-2 font-mono text-xs uppercase tracking-[0.2em] text-text-tertiary">
+              <footer className="mt-2 font-mono text-xs uppercase tracking-widest text-text-tertiary">
                 — a lesson from chapter three
               </footer>
             </motion.blockquote>
@@ -99,10 +99,10 @@ const AboutSection = () => {
                   href={edu.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group block rounded-xl border border-border-subtle bg-background-secondary/70 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-primary/30 hover:shadow-[0_20px_40px_-24px_rgba(245,158,11,0.25)]"
+                  className="group block rounded-xl border border-border-subtle bg-background-secondary/70 p-6 backdrop-blur-xs transition-all duration-300 hover:-translate-y-1 hover:border-accent-primary/30 hover:shadow-[0_20px_40px_-24px_rgba(245,158,11,0.25)]"
                 >
                   <div className="mb-2 flex items-center justify-between gap-4">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-primary">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-accent-primary">
                       {edu.note}
                     </span>
                     <span className="rounded-full border border-border-subtle bg-background-tertiary px-2.5 py-1 font-mono text-[10px] text-text-tertiary">

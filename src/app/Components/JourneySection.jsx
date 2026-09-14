@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from 'react';
 import Link from 'next/link';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'motion/react';
 import ChapterHeading from './ChapterHeading';
 import { fadeUp, popIn, slideLeft, slideRight, stagger } from '../lib/animations';
 
@@ -57,7 +57,7 @@ const TimelineCard = ({ point, side }) => (
     href={point.url}
     target="_blank"
     rel="noopener noreferrer"
-    className={`group block rounded-xl border border-border-subtle bg-background-secondary/70 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-primary/30 hover:shadow-[0_24px_48px_-28px_rgba(245,158,11,0.3)] ${
+    className={`group block rounded-xl border border-border-subtle bg-background-secondary/70 p-6 backdrop-blur-xs transition-all duration-300 hover:-translate-y-1 hover:border-accent-primary/30 hover:shadow-[0_24px_48px_-28px_rgba(245,158,11,0.3)] ${
       side === 'left' ? 'lg:text-right' : ''
     }`}
   >
@@ -84,7 +84,7 @@ const TimelineCard = ({ point, side }) => (
       {point.stack.map((tech) => (
         <span
           key={tech}
-          className="rounded bg-background-tertiary px-2.5 py-1 font-mono text-[10px] text-text-tertiary"
+          className="rounded-sm bg-background-tertiary px-2.5 py-1 font-mono text-[10px] text-text-tertiary"
         >
           {tech}
         </span>
@@ -117,7 +117,7 @@ const JourneySection = () => {
           {/* The spine */}
           <div className="absolute left-4 top-0 h-full w-px bg-border-subtle lg:left-1/2 lg:-translate-x-1/2" />
           <motion.div
-            className="absolute left-4 top-0 h-full w-px origin-top bg-gradient-to-b from-accent-primary via-accent-primary to-accent-secondary lg:left-1/2 lg:-translate-x-1/2"
+            className="absolute left-4 top-0 h-full w-px origin-top bg-linear-to-b from-accent-primary via-accent-primary to-accent-secondary lg:left-1/2 lg:-translate-x-1/2"
             style={{ scaleY: lineProgress }}
           />
 
@@ -187,7 +187,7 @@ const JourneySection = () => {
             viewport={{ once: true, amount: 0.8 }}
             variants={fadeUp}
           >
-            <span className="rounded-full border border-border-subtle bg-background-secondary/80 px-5 py-2 font-mono text-xs uppercase tracking-[0.25em] text-text-tertiary backdrop-blur-sm">
+            <span className="rounded-full border border-border-subtle bg-background-secondary/80 px-5 py-2 font-mono text-xs uppercase tracking-[0.25em] text-text-tertiary backdrop-blur-xs">
               to be continued<span className="text-accent-primary">…</span>
             </span>
           </motion.div>

@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { WordReveal } from './TextReveal';
 import { fadeUp, lineScaleX, stagger, VIEWPORT } from '../lib/animations';
 
@@ -40,7 +40,7 @@ const ChapterHeading = ({ number, kicker, title, lead }) => {
           <span className="text-accent-primary">Chapter {number}</span>
           <motion.span
             variants={lineScaleX}
-            className="h-px w-16 bg-gradient-to-r from-accent-primary/60 to-transparent"
+            className="h-px w-16 bg-linear-to-r from-accent-primary/60 to-transparent"
           />
           <span className="text-text-tertiary">{kicker}</span>
         </motion.div>

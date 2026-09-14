@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { maskUp, letterMaskUp, stagger } from '../lib/animations';
 
 // Letter-by-letter masked reveal. Letters rise out of an invisible "ink line"
@@ -22,7 +22,7 @@ export const LetterReveal = ({ text, className = '', delay = 0, inView = false }
       {words.map((word, wi) => (
         <React.Fragment key={`${word}-${wi}`}>
           <span
-            className="inline-block overflow-hidden align-bottom pb-[0.08em] -mb-[0.08em]"
+            className="inline-block overflow-hidden align-bottom pb-[0.08em] mb-[-0.08em]"
             aria-hidden="true"
           >
             {word.split('').map((letter, li) => (
@@ -58,7 +58,7 @@ export const WordReveal = ({ text, className = '', delay = 0, amount = 0.5 }) =>
       {words.map((word, wi) => (
         <React.Fragment key={`${word}-${wi}`}>
           <span
-            className="inline-block overflow-hidden align-bottom pb-[0.1em] -mb-[0.1em]"
+            className="inline-block overflow-hidden align-bottom pb-[0.1em] mb-[-0.1em]"
             aria-hidden="true"
           >
             <motion.span variants={maskUp} className="inline-block">

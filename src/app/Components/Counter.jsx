@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
-import { animate, useInView } from 'framer-motion';
+import { animate, useInView } from 'motion/react';
 import { EASE } from '../lib/animations';
 
 // Counts up from 0 when scrolled into view.

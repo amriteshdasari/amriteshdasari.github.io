@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { WordReveal } from './TextReveal';
 import MagneticButton from './MagneticButton';
 import { fadeUp, lineScaleX, popIn, scaleIn, stagger, VIEWPORT } from '../lib/animations';
@@ -54,18 +54,18 @@ const EmailSection = () => {
           >
             <motion.span
               variants={lineScaleX}
-              className="h-px w-12 bg-gradient-to-r from-transparent to-accent-primary/60"
+              className="h-px w-12 bg-linear-to-r from-transparent to-accent-primary/60"
             />
             <span className="text-accent-primary">Epilogue</span>
             <motion.span
               variants={lineScaleX}
-              className="h-px w-12 bg-gradient-to-l from-transparent to-accent-primary/60"
+              className="h-px w-12 bg-linear-to-l from-transparent to-accent-primary/60"
             />
           </motion.div>
 
           {/* Floating memoji */}
           <motion.div variants={scaleIn} className="relative">
-            <div className="absolute -inset-5 rounded-full bg-gradient-to-br from-accent-primary/20 via-accent-primary/5 to-transparent blur-2xl" />
+            <div className="absolute -inset-5 rounded-full bg-linear-to-br from-accent-primary/20 via-accent-primary/5 to-transparent blur-2xl" />
             <div className="animate-floaty relative flex h-40 w-40 items-center justify-center overflow-hidden rounded-full border border-border-subtle bg-background-secondary/50 sm:h-48 sm:w-48 lg:h-56 lg:w-56">
               <Image
                 src="/images/Himemoji.png"

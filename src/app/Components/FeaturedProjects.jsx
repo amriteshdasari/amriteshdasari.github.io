@@ -6,7 +6,7 @@ import {
   useMotionValue,
   useSpring,
   useMotionTemplate,
-} from 'framer-motion';
+} from 'motion/react';
 import ChapterHeading from './ChapterHeading';
 import MagneticButton from './MagneticButton';
 import { fadeUp, stagger, VIEWPORT_SHALLOW } from '../lib/animations';
@@ -78,13 +78,13 @@ const TiltCard = ({ project, index }) => {
   };
 
   return (
-    <motion.article variants={fadeUp} className="h-full [perspective:900px]">
+    <motion.article variants={fadeUp} className="h-full perspective-[900px]">
       <motion.div
         ref={ref}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-        className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border-subtle bg-background-secondary/80 p-6 backdrop-blur-sm transition-colors duration-300 hover:border-accent-primary/30"
+        className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border-subtle bg-background-secondary/80 p-6 backdrop-blur-xs transition-colors duration-300 hover:border-accent-primary/30"
       >
         {/* Cursor spotlight inside the card */}
         <motion.div
@@ -117,7 +117,7 @@ const TiltCard = ({ project, index }) => {
             {project.stack.map((tech) => (
               <span
                 key={tech}
-                className="rounded bg-background-tertiary px-2.5 py-1 font-mono text-[10px] text-text-tertiary"
+                className="rounded-sm bg-background-tertiary px-2.5 py-1 font-mono text-[10px] text-text-tertiary"
               >
                 {tech}
               </span>

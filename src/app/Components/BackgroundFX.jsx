@@ -1,13 +1,12 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, useMotionValue, useSpring, useMotionTemplate } from "motion/react";
 
 // Atmosphere layer: film grain, drifting ember particles, a faint dot grid,
 // and a cursor-following spotlight. Everything lives behind the content.
 const BackgroundFX = () => {
   const grainRef = useRef(null);
   const emberRef = useRef(null);
-  const [finePointer, setFinePointer] = useState(false);
 
   const mouseX = useMotionValue(-1000);
   const mouseY = useMotionValue(-1000);
@@ -125,7 +124,6 @@ const BackgroundFX = () => {
   // Cursor spotlight only makes sense with a real pointer.
   useEffect(() => {
     if (!window.matchMedia('(pointer: fine)').matches) return;
-    setFinePointer(true);
     const onMove = (e) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
@@ -170,13 +168,11 @@ const BackgroundFX = () => {
       />
 
       {/* Cursor spotlight */}
-      {finePointer && (
-        <motion.div
-          className="pointer-events-none fixed inset-0 z-0"
-          style={{ background: spotlight }}
-          aria-hidden="true"
-        />
-      )}
+      <motion.div
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{ background: spotlight }}
+        aria-hidden="true"
+      />
     </>
   );
 };

@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { TypeAnimation } from 'react-type-animation';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { LetterReveal } from './TextReveal';
 import MagneticButton from './MagneticButton';
 import Counter from './Counter';
@@ -35,7 +35,7 @@ const HeroSection = () => {
     >
       {/* Drifting backdrop glow */}
       <motion.div className="absolute inset-x-0 top-10 -z-10" style={{ y: glowY }}>
-        <div className="mx-auto h-72 w-[80%] max-w-5xl rounded-full bg-gradient-to-r from-accent-primary/10 via-transparent to-accent-primary/10 blur-3xl" />
+        <div className="mx-auto h-72 w-[80%] max-w-5xl rounded-full bg-linear-to-r from-accent-primary/10 via-transparent to-accent-primary/10 blur-3xl" />
       </motion.div>
 
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-12">
@@ -90,7 +90,7 @@ const HeroSection = () => {
                 wrapper="span"
                 speed={40}
                 repeat={Infinity}
-                className="font-semibold uppercase tracking-[0.2em] text-accent-primary"
+                className="font-semibold uppercase tracking-widest text-accent-primary"
               />
             </motion.div>
 
@@ -162,7 +162,7 @@ const HeroSection = () => {
           >
             <div className="group relative">
               {/* Glow */}
-              <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-accent-primary/25 via-accent-primary/5 to-transparent blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute -inset-2 rounded-2xl bg-linear-to-br from-accent-primary/25 via-accent-primary/5 to-transparent blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
 
               {/* Corner brackets */}
               <span className="absolute -top-3 -left-3 h-8 w-8 border-t-2 border-l-2 border-accent-primary/70 transition-all duration-500 group-hover:-top-4 group-hover:-left-4" />
@@ -173,7 +173,7 @@ const HeroSection = () => {
                   src="/images/Amritesh.jpeg"
                   alt="Amritesh Dasari"
                   fill
-                  className="object-cover grayscale-[35%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                  className="object-cover grayscale-35 transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
                   priority
                 />
               </div>
@@ -184,7 +184,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 style={{ x: '-50%' }}
                 transition={{ delay: 1.6, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute -bottom-5 left-1/2 flex w-max max-w-[calc(100vw-3rem)] items-center gap-2 rounded-full border border-border-subtle bg-background-secondary/90 px-4 py-2 backdrop-blur-sm"
+                className="absolute -bottom-5 left-1/2 flex w-max max-w-[calc(100vw-3rem)] items-center gap-2 rounded-full border border-border-subtle bg-background-secondary/90 px-4 py-2 backdrop-blur-xs"
               >
                 <span className="h-2 w-2 shrink-0 animate-pulse-dot rounded-full bg-accent-primary" />
                 <span className="truncate whitespace-nowrap font-mono text-[10px] text-text-secondary sm:text-xs">

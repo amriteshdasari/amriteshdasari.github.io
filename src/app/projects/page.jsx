@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import BackgroundFX from "../Components/BackgroundFX";
 import NavBar from "../Components/NavBar";
 import StoryRail from "../Components/StoryRail";
@@ -195,7 +195,7 @@ export default function ProjectsPage() {
             className="relative mb-4 flex items-center gap-4 font-mono text-xs uppercase tracking-[0.3em]"
           >
             <span className="text-accent-primary">The Archive</span>
-            <span className="h-px w-16 bg-gradient-to-r from-accent-primary/60 to-transparent" />
+            <span className="h-px w-16 bg-linear-to-r from-accent-primary/60 to-transparent" />
             <span className="text-text-tertiary">complete works</span>
           </motion.div>
 
@@ -258,7 +258,7 @@ export default function ProjectsPage() {
                   <motion.article
                     key={item.name}
                     variants={slideRight}
-                    className="group rounded-xl border border-border-subtle bg-background-secondary/70 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent-primary/30 hover:shadow-[0_24px_48px_-30px_rgba(245,158,11,0.3)]"
+                    className="group rounded-xl border border-border-subtle bg-background-secondary/70 p-6 backdrop-blur-xs transition-all duration-300 hover:border-accent-primary/30 hover:shadow-[0_24px_48px_-30px_rgba(245,158,11,0.3)]"
                   >
                     <div className="mb-3 flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
                       <div className="flex items-baseline gap-3">
@@ -276,7 +276,7 @@ export default function ProjectsPage() {
                         {item.stack.map((tech) => (
                           <span
                             key={tech}
-                            className="rounded border border-border-subtle bg-background-primary px-2 py-0.5 font-mono text-[10px] text-text-tertiary"
+                            className="rounded-sm border border-border-subtle bg-background-primary px-2 py-0.5 font-mono text-[10px] text-text-tertiary"
                           >
                             {tech}
                           </span>
@@ -287,7 +287,7 @@ export default function ProjectsPage() {
                     <ul className="space-y-1.5 text-sm leading-relaxed text-text-secondary">
                       {item.bullets.map((bullet, idx) => (
                         <li key={idx} className="flex gap-2">
-                          <span className="mt-0.5 flex-shrink-0 text-accent-primary">›</span>
+                          <span className="mt-0.5 shrink-0 text-accent-primary">›</span>
                           <span>{bullet}</span>
                         </li>
                       ))}

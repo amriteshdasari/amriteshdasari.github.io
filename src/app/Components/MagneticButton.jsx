@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'motion/react';
 
 // Wraps any element and makes it lean toward the cursor, snapping back on leave.
 const MagneticButton = ({ children, className = '', strength = 0.35 }) => {
