@@ -1,4 +1,5 @@
 import { Instrument_Sans, JetBrains_Mono, Fraunces } from 'next/font/google'
+import MotionProvider from './Components/MotionProvider'
 import './globals.css'
 
 const instrumentSans = Instrument_Sans({
@@ -20,15 +21,47 @@ const fraunces = Fraunces({
   display: 'swap'
 })
 
+const TITLE = 'Amritesh Dasari | Software Engineer'
+const DESCRIPTION =
+  'Software engineer building reliable backend services, data pipelines, and distributed systems — from enterprise AI chatbots to fault-tolerant clusters.'
+
 export const metadata = {
-  title: "Amritesh Dasari | Software Engineer",
-  description: 'Software engineer specializing in distributed systems and backend development. Every reliable system tells a story — this one is mine.',
+  metadataBase: new URL('https://amriteshdasari.github.io'),
+  title: { default: TITLE, template: '%s | Amritesh Dasari' },
+  description: DESCRIPTION,
+  openGraph: {
+    type: 'website',
+    url: '/',
+    siteName: 'Amritesh Dasari',
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [
+      {
+        url: '/og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Mohan Amritesh Dasari — Software Engineer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ['/og.jpg'],
+  },
+}
+
+export const viewport = {
+  themeColor: '#0a0a0b',
+  colorScheme: 'dark',
 }
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={[
         instrumentSans.variable,
         jetbrainsMono.variable,
@@ -36,7 +69,7 @@ export default function RootLayout({ children }) {
       ].join(' ')}
     >
       <body className="font-sans bg-background-primary text-text-secondary antialiased">
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   )

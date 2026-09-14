@@ -4,21 +4,30 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
-import { EASE, fadeDown, stagger } from '../lib/animations';
+import { EASE, stagger } from '../lib/animations';
 
 const NAV_ITEMS = [
-  { title: 'Prologue', num: '00', href: '/#home', id: 'home' },
-  { title: 'Origins', num: '01', href: '/#about', id: 'about' },
-  { title: 'Toolkit', num: '02', href: '/#skills', id: 'skills' },
-  { title: 'Journey', num: '03', href: '/#journey', id: 'journey' },
-  { title: 'The Work', num: '04', href: '/#projects', id: 'projects' },
-  { title: 'Epilogue', num: '05', href: '/#contact', id: 'contact' },
-  { title: 'Archive', num: '++', href: '/projects', id: null },
+  { title: 'About', num: '01', href: '/#about', id: 'about' },
+  { title: 'Skills', num: '02', href: '/#skills', id: 'skills' },
+  { title: 'Experience', num: '03', href: '/#experience', id: 'experience' },
+  { title: 'Projects', num: '04', href: '/#projects', id: 'projects' },
+  { title: 'Contact', num: '05', href: '/#contact', id: 'contact' },
+  { title: 'Archive', num: '++', href: '/projects/', id: null },
 ];
+
+// The hero is observed too, so scrolling back to the top clears the highlight.
+const OBSERVED_IDS = ['home', ...NAV_ITEMS.filter((item) => item.id).map((item) => item.id)];
+
+const normalize = (path) => path.replace(/\/$/, '') || '/';
+
+const mobileItem = {
+  hidden: { opacity: 0, x: -24 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: EASE } },
+};
 
 const NavBar = () => {
   const pathname = usePathname();
-  const isHome = pathname === '/';
+  const isHome = normalize(pathname) === '/';
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -40,8 +49,7 @@ const NavBar = () => {
       },
       { rootMargin: '-42% 0px -52% 0px' }
     );
-    NAV_ITEMS.forEach(({ id }) => {
-      if (!id) return;
+    OBSERVED_IDS.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -49,31 +57,23 @@ const NavBar = () => {
   }, [isHome]);
 
   const isItemActive = (item) => {
-    if (!item.id) return pathname === item.href;
+    if (!item.id) return normalize(pathname) === normalize(item.href);
     return isHome && activeSection === item.id;
   };
 
-  const mobileItem = {
-    hidden: { opacity: 0, x: -24 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: EASE } },
-  };
-
   return (
-    <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'border-b border-border-subtle bg-background-primary/80 backdrop-blur-md'
-          : 'border-b border-transparent bg-transparent'
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-500 ${
+        scrolled || menuOpen
+          ? 'border-border-subtle bg-background-primary/85 backdrop-blur-md'
+          : 'border-transparent bg-transparent'
       }`}
-      initial="hidden"
-      animate="visible"
-      variants={fadeDown}
     >
       <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
-        {/* Logo */}
         <Link
           href="/"
           className="group font-display text-2xl font-semibold tracking-tight text-text-primary transition-colors duration-300 hover:text-accent-primary"
+          aria-label="Mohan Amritesh Dasari — home"
         >
           MAD
           <span className="inline-block text-accent-primary transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -82,24 +82,20 @@ const NavBar = () => {
         </Link>
 
         {/* Desktop nav */}
-        <motion.ul
-          className="hidden items-center gap-7 md:flex"
-          variants={stagger(0.07, 0.2)}
-          initial="hidden"
-          animate="visible"
-        >
+        <ul className="hidden items-center gap-7 md:flex">
           {NAV_ITEMS.map((item) => {
             const active = isItemActive(item);
             return (
-              <motion.li key={item.title} variants={fadeDown} className="relative">
+              <li key={item.title} className="relative">
                 <Link
                   href={item.href}
+                  aria-current={active ? 'location' : undefined}
                   className={`group flex items-baseline gap-1.5 text-sm font-medium tracking-wide transition-colors duration-300 ${
                     active ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary'
                   }`}
                 >
                   <span
-                    className={`font-mono text-[10px] transition-colors duration-300 ${
+                    className={`font-mono text-xs transition-colors duration-300 ${
                       active ? 'text-accent-primary' : 'text-text-tertiary group-hover:text-accent-primary'
                     }`}
                   >
@@ -114,17 +110,18 @@ const NavBar = () => {
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
-              </motion.li>
+              </li>
             );
           })}
-        </motion.ul>
+        </ul>
 
         {/* Mobile toggle */}
         <button
           onClick={() => setMenuOpen((open) => !open)}
           className="p-2 text-text-secondary transition-colors duration-300 hover:text-text-primary md:hidden"
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           {menuOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
         </button>
@@ -134,15 +131,16 @@ const NavBar = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: EASE }}
-            className="overflow-hidden border-b border-border-subtle bg-background-primary/95 backdrop-blur-md md:hidden"
+            className="overflow-hidden border-t border-border-subtle md:hidden"
           >
             <motion.ul
               className="flex flex-col gap-1 px-6 py-4"
-              variants={stagger(0.06)}
+              variants={stagger(0.05)}
               initial="hidden"
               animate="visible"
             >
@@ -153,7 +151,8 @@ const NavBar = () => {
                     <Link
                       href={item.href}
                       onClick={() => setMenuOpen(false)}
-                      className={`flex items-baseline gap-3 border-l-2 py-2.5 pl-4 transition-all duration-300 ${
+                      aria-current={active ? 'location' : undefined}
+                      className={`flex items-baseline gap-3 border-l-2 py-2.5 pl-4 transition-colors duration-300 ${
                         active
                           ? 'border-accent-primary text-text-primary'
                           : 'border-transparent text-text-secondary hover:border-border-hover hover:text-text-primary'
@@ -169,7 +168,7 @@ const NavBar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 };
 
