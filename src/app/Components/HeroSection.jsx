@@ -1,8 +1,12 @@
 import Image from 'next/image';
-import { EMAIL, PROJECT_COUNT, RESUME_URL } from '../lib/content';
+import { CAREER_START, EMAIL, PROJECT_COUNT, RESUME_URL } from '../lib/content';
+
+const MS_PER_YEAR = 365.25 * 24 * 60 * 60 * 1000;
+// Evaluated at build time, so the figure keeps up with each deploy.
+const YEARS_IN_PRODUCTION = Math.floor((Date.now() - CAREER_START) / MS_PER_YEAR);
 
 const FACTS = [
-  { value: '2+', label: 'years in production' },
+  { value: `${YEARS_IN_PRODUCTION}+`, label: 'years in production' },
   { value: String(PROJECT_COUNT), label: 'projects shipped' },
   { value: 'M.S.', label: 'Computer Science, UIUC' },
 ];
@@ -25,7 +29,7 @@ const HeroSection = () => (
           >
             <span className="h-px w-10 bg-accent-primary/60" aria-hidden="true" />
             <span>
-              Software Engineer <span className="text-accent-primary">·</span> Distributed Systems
+              Software Engineer <span className="text-accent-primary">·</span> Backend &amp; Applied AI
             </span>
           </p>
 
@@ -46,16 +50,16 @@ const HeroSection = () => (
             className="enter-rise max-w-xl text-xl font-medium leading-snug text-balance text-text-primary sm:text-2xl"
             style={delay(320)}
           >
-            I build reliable services, tighten feedback loops with automation, and keep latency
-            predictable at scale.
+            I build reliable backend systems and put AI to work inside them — on the Microsoft
+            cloud, and on-device when the data can&rsquo;t leave.
           </p>
 
           <p
             className="enter-rise max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg"
             style={delay(420)}
           >
-            Backend, data, and platform engineering — from enterprise AI chatbots to Snowflake
-            pipelines and fault-tolerant distributed systems.
+            Backend, platform, and applied-AI engineering — from a Microsoft 365 posture platform
+            and document-AI tools to Snowflake pipelines and fault-tolerant distributed systems.
           </p>
 
           <div className="enter-rise flex flex-wrap items-center gap-3 pt-1" style={delay(520)}>

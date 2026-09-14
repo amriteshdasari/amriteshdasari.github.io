@@ -23,7 +23,7 @@ const fraunces = Fraunces({
 
 const TITLE = 'Amritesh Dasari | Software Engineer'
 const DESCRIPTION =
-  'Software engineer building reliable backend services, data pipelines, and distributed systems — from enterprise AI chatbots to fault-tolerant clusters.'
+  'Software engineer building backend services, applied-AI tools, and data pipelines on the Microsoft cloud — from a Microsoft 365 posture platform to fault-tolerant distributed systems.'
 
 export const metadata = {
   metadataBase: new URL('https://amriteshdasari.github.io'),

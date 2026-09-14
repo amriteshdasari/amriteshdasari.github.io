@@ -10,17 +10,18 @@ const AboutSection = () => (
         {/* Bio */}
         <div className="space-y-7">
           <p className="drop-cap text-lg leading-relaxed text-text-secondary">
-            Specializing in distributed systems, backend development, and full-stack engineering,
-            I build software that keeps working when things go wrong. My day-to-day spans Python,
-            Kafka, Docker, Kubernetes, PostgreSQL, Flask, React, and the cloud-native tooling that
-            holds it all together.
+            Most of what I build is backend: systems that keep working when things go wrong and,
+            increasingly, the AI features that live inside them. My day-to-day is TypeScript and
+            Python on Azure — Next.js and Flask services, Postgres and Snowflake underneath,
+            Microsoft Graph and Entra ID everywhere, and Docker holding it together.
           </p>
 
           <p className="text-lg leading-relaxed text-text-secondary">
-            I&rsquo;ve built everything from a distributed machine learning cluster to
-            production-ready chatbots, data extraction pipelines, and DNS security tools. I&rsquo;m
-            a continuous learner who enjoys tackling complex problems, improving data workflows,
-            and delivering reliable, well-engineered systems as part of collaborative teams.
+            The roots are in distributed systems — a fault-tolerant ten-node cluster built from
+            scratch at UIUC, then message queues at quick-commerce scale. Since then I&rsquo;ve
+            shipped a Microsoft 365 posture platform, document-AI tools that run in the cloud and
+            on-device, data pipelines, and security tooling, usually as the engineer who owns the
+            whole stack.
           </p>
 
           <blockquote className="border-l-2 border-accent-primary pl-6">

@@ -18,4 +18,4 @@ npm run build   # static site in ./out
 - `src/app/lib/content.js` — all copy: projects, experience, skills, and contact links
 - `src/app/Components/` — the home page sections
 - `src/app/projects/page.jsx` — the full project archive
-- `public/og.png`, `src/app/icon.png` — link-preview card and favicon
+- `public/og.jpg`, `src/app/icon.png` — link-preview card and favicon

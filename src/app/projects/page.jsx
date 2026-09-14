@@ -109,7 +109,10 @@ export default function ProjectsPage() {
                           <h3 className="font-display text-lg font-semibold text-text-primary">
                             {item.name}
                           </h3>
-                          <p className="text-sm text-text-tertiary">{item.context}</p>
+                          <p className="text-sm text-text-tertiary">
+                            {item.context}
+                            {item.period && <span className="font-mono"> · {item.period}</span>}
+                          </p>
                         </div>
                       </div>
                       <ul className="flex flex-wrap gap-1.5 md:max-w-[50%] md:justify-end">
