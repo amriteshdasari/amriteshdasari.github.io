@@ -21,12 +21,15 @@ const fraunces = Fraunces({
   display: 'swap'
 })
 
+import { SITE_URL } from './lib/site'
+
 const TITLE = 'Amritesh Dasari | Software Engineer'
 const DESCRIPTION =
   'Software engineer building backend services, applied-AI tools, and data pipelines on the Microsoft cloud — from a Microsoft 365 posture platform to fault-tolerant distributed systems.'
 
 export const metadata = {
-  metadataBase: new URL('https://amriteshdasari.github.io'),
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: '/' },
   title: { default: TITLE, template: '%s | Amritesh Dasari' },
   description: DESCRIPTION,
   openGraph: {

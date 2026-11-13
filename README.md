@@ -1,6 +1,6 @@
 # amriteshdasari.github.io
 
-Personal portfolio of Mohan Amritesh Dasari — live at [amriteshdasari.github.io](https://amriteshdasari.github.io).
+Personal portfolio of Mohan Amritesh Dasari — live at [amriteshdasari.dev](https://amriteshdasari.dev).
 
 Built with Next.js (static export), Tailwind CSS v4, and Motion. Every push to `master` is built and deployed to GitHub Pages by [`.github/workflows/nextjs.yml`](.github/workflows/nextjs.yml).
 

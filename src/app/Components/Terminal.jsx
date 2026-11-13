@@ -270,7 +270,7 @@ const run = (input, { navigate, close, clear }) => {
       return { lines: [<Dim key="b">bye.</Dim>], effect: close };
 
     case 'pwd':
-      return { lines: ['/home/visitor/amriteshdasari.github.io'] };
+      return { lines: ['/home/visitor/amriteshdasari.dev'] };
 
     case 'echo':
       return { lines: [arg] };

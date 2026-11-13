@@ -10,6 +10,7 @@ const DESCRIPTION = `All ${PROJECT_COUNT} professional and personal projects by 
 export const metadata = {
   title: TITLE,
   description: DESCRIPTION,
+  alternates: { canonical: '/projects/' },
   openGraph: {
     type: 'website',
     url: '/projects/',
