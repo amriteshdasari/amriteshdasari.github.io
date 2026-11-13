@@ -1,10 +1,14 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import { EASE, stagger } from '../lib/animations';
+
+// Loaded on first open, so the terminal costs nothing until someone asks for it.
+const Terminal = dynamic(() => import('./Terminal'), { ssr: false });
 
 const NAV_ITEMS = [
   { title: 'About', num: '01', href: '/#about', id: 'about' },
@@ -31,6 +35,28 @@ const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [terminalOpen, setTerminalOpen] = useState(false);
+
+  // ⌘K / Ctrl+K toggles the terminal; "/" opens it when nothing is being typed.
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        setTerminalOpen((open) => !open);
+      } else if (
+        event.key === '/' &&
+        !event.metaKey &&
+        !event.ctrlKey &&
+        !event.altKey &&
+        !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName ?? '')
+      ) {
+        event.preventDefault();
+        setTerminalOpen(true);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -62,6 +88,7 @@ const NavBar = () => {
   };
 
   return (
+    <>
     <header
       className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-500 ${
         scrolled || menuOpen
@@ -82,7 +109,7 @@ const NavBar = () => {
         </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="ml-auto hidden items-center gap-5 md:flex lg:gap-7">
           {NAV_ITEMS.map((item) => {
             const active = isItemActive(item);
             return (
@@ -115,16 +142,37 @@ const NavBar = () => {
           })}
         </ul>
 
+        <div className="flex items-center gap-1 md:ml-6">
+        <button
+          type="button"
+          onClick={() => {
+            setMenuOpen(false);
+            setTerminalOpen(true);
+          }}
+          className="group flex h-11 items-center gap-2 rounded-lg px-2 font-mono text-xs text-text-secondary transition-colors duration-300 hover:text-text-primary"
+          aria-label="Open terminal"
+          aria-haspopup="dialog"
+        >
+          <span className="rounded-md border border-border px-2 py-1.5 transition-colors duration-300 group-hover:border-accent-primary/50 group-hover:text-accent-primary">
+            <span className="text-accent-primary">&gt;</span>_
+          </span>
+          <kbd className="hidden font-mono text-text-tertiary lg:inline" aria-hidden="true">
+            ⌘K
+          </kbd>
+        </button>
+
         {/* Mobile toggle */}
         <button
+          type="button"
           onClick={() => setMenuOpen((open) => !open)}
-          className="p-2 text-text-secondary transition-colors duration-300 hover:text-text-primary md:hidden"
+          className="-mr-2 flex h-11 w-11 items-center justify-center text-text-secondary transition-colors duration-300 hover:text-text-primary md:hidden"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
         >
           {menuOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
         </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
@@ -169,6 +217,12 @@ const NavBar = () => {
         )}
       </AnimatePresence>
     </header>
+
+    {/* Outside the header: its backdrop blur would trap a fixed overlay. */}
+    <AnimatePresence>
+      {terminalOpen && <Terminal onClose={() => setTerminalOpen(false)} />}
+    </AnimatePresence>
+    </>
   );
 };
 
