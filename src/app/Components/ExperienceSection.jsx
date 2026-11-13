@@ -67,7 +67,7 @@ const ExperienceSection = () => {
             aria-hidden="true"
           />
           <motion.div
-            className="absolute left-4 top-0 h-full w-px origin-top bg-linear-to-b from-accent-primary via-accent-primary to-accent-secondary lg:left-1/2 lg:-translate-x-1/2"
+            className="absolute left-4 top-0 h-full w-px origin-top bg-accent-primary lg:left-1/2 lg:-translate-x-1/2"
             style={{ scaleY: lineProgress }}
             aria-hidden="true"
           />
@@ -84,7 +84,7 @@ const ExperienceSection = () => {
                     className="absolute left-4 top-7 z-10 flex h-4 w-4 -translate-x-1/2 items-center justify-center lg:left-1/2"
                     aria-hidden="true"
                   >
-                    <span className="h-2.5 w-2.5 rounded-full bg-accent-primary shadow-[0_0_14px_rgba(245,158,11,0.8)]" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-accent-primary" />
                   </span>
 
                   {/* Period across the spine (desktop) */}

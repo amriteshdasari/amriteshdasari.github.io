@@ -1,7 +1,5 @@
 import Link from 'next/link';
-import BackgroundFX from '../Components/BackgroundFX';
 import NavBar from '../Components/NavBar';
-import ReadingProgress from '../Components/ReadingProgress';
 import ArchiveList from '../Components/ArchiveList';
 import { PROJECT_COUNT } from '../lib/content';
 
@@ -27,8 +25,6 @@ const delay = (ms) => ({ '--delay': `${ms}ms` });
 export default function ProjectsPage() {
   return (
     <>
-      <BackgroundFX />
-      <ReadingProgress />
       <NavBar />
 
       <main className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-32 pb-20 lg:px-12">
@@ -38,7 +34,7 @@ export default function ProjectsPage() {
             style={delay(0)}
           >
             <span className="text-accent-primary">Archive</span>
-            <span className="h-px w-16 bg-linear-to-r from-accent-primary/60 to-transparent" aria-hidden="true" />
+            <span className="h-px w-10 bg-border-hover" aria-hidden="true" />
             <span className="text-text-tertiary">{PROJECT_COUNT} projects</span>
           </p>
 

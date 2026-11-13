@@ -11,12 +11,12 @@ import { EASE, stagger } from '../lib/animations';
 const Terminal = dynamic(() => import('./Terminal'), { ssr: false });
 
 const NAV_ITEMS = [
-  { title: 'About', num: '01', href: '/#about', id: 'about' },
-  { title: 'Skills', num: '02', href: '/#skills', id: 'skills' },
-  { title: 'Experience', num: '03', href: '/#experience', id: 'experience' },
-  { title: 'Projects', num: '04', href: '/#projects', id: 'projects' },
-  { title: 'Contact', num: '05', href: '/#contact', id: 'contact' },
-  { title: 'Archive', num: '++', href: '/projects/', id: null },
+  { title: 'About', href: '/#about', id: 'about' },
+  { title: 'Skills', href: '/#skills', id: 'skills' },
+  { title: 'Experience', href: '/#experience', id: 'experience' },
+  { title: 'Projects', href: '/#projects', id: 'projects' },
+  { title: 'Contact', href: '/#contact', id: 'contact' },
+  { title: 'Archive', href: '/projects/', id: null },
 ];
 
 // The hero is observed too, so scrolling back to the top clears the highlight.
@@ -117,17 +117,10 @@ const NavBar = () => {
                 <Link
                   href={item.href}
                   aria-current={active ? 'location' : undefined}
-                  className={`group flex items-baseline gap-1.5 py-2 text-sm font-medium tracking-wide transition-colors duration-300 ${
+                  className={`flex py-2 text-sm font-medium transition-colors duration-300 ${
                     active ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary'
                   }`}
                 >
-                  <span
-                    className={`font-mono text-xs transition-colors duration-300 ${
-                      active ? 'text-accent-primary' : 'text-text-tertiary group-hover:text-accent-primary'
-                    }`}
-                  >
-                    {item.num}
-                  </span>
                   {item.title}
                 </Link>
                 {active && (
@@ -206,7 +199,6 @@ const NavBar = () => {
                           : 'border-transparent text-text-secondary hover:border-border-hover hover:text-text-primary'
                       }`}
                     >
-                      <span className="font-mono text-xs text-accent-primary">{item.num}</span>
                       <span className="text-base font-medium">{item.title}</span>
                     </Link>
                   </motion.li>
