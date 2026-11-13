@@ -5,6 +5,7 @@ export const EMAIL = 'dmamritesh@gmail.com';
 export const RESUME_URL =
   'https://drive.google.com/file/d/1SrO4j8d-Np81Mh2x0hQdJNxvgmtxce3V/view?usp=sharing';
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/amritesh-dasari';
+export const GITHUB_URL = 'https://github.com/amriteshdasari';
 
 // First day in a production role — the hero derives "years in production" from it.
 export const CAREER_START = new Date('2024-02-01');
