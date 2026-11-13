@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Tilt from './Tilt';
 import { CAREER_START, EMAIL, PROJECT_COUNT, RESUME_URL } from '../lib/content';
 
 const MS_PER_YEAR = 365.25 * 24 * 60 * 60 * 1000;
@@ -66,7 +65,7 @@ const HeroSection = () => (
           <div className="enter-rise flex flex-wrap items-center gap-3 pt-1" style={delay(520)}>
             <a
               href={`mailto:${EMAIL}`}
-              className="inline-flex items-center rounded-lg bg-accent-primary px-6 py-3 text-base font-semibold text-background-primary shadow-[0_10px_30px_-12px_rgba(245,158,11,0.45)] transition-colors duration-300 hover:bg-accent-secondary"
+              className="inline-flex items-center rounded-lg bg-accent-primary px-6 py-3 text-base font-semibold text-background-primary transition-colors duration-300 hover:bg-accent-secondary"
             >
               Get in touch
             </a>
@@ -105,20 +104,7 @@ const HeroSection = () => (
           className="enter-rise order-first flex items-end gap-5 md:order-none md:col-span-5 md:flex-col md:gap-6"
           style={delay(200)}
         >
-          <Tilt className="group relative w-36 shrink-0 sm:w-48 md:w-full md:max-w-[420px]">
-            <div
-              className="absolute -inset-3 rounded-3xl bg-linear-to-br from-accent-primary/25 via-accent-primary/5 to-transparent blur-2xl"
-              aria-hidden="true"
-            />
-            <span
-              className="absolute -top-3 -left-3 h-8 w-8 border-t-2 border-l-2 border-accent-primary/70 transition-all duration-500 group-hover:-top-4 group-hover:-left-4"
-              aria-hidden="true"
-            />
-            <span
-              className="absolute -right-3 -bottom-3 h-8 w-8 border-r-2 border-b-2 border-accent-primary/70 transition-all duration-500 group-hover:-right-4 group-hover:-bottom-4"
-              aria-hidden="true"
-            />
-
+          <div className="relative w-36 shrink-0 sm:w-48 md:w-full md:max-w-[400px]">
             <div className="relative overflow-hidden rounded-2xl border border-border-subtle">
               <Image
                 src="/images/amritesh-portrait.webp"
@@ -126,30 +112,25 @@ const HeroSection = () => (
                 width={720}
                 height={900}
                 preload
-                className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.03]"
-              />
-              {/* Glare that follows the pointer; Tilt sets --glare-x / --glare-y */}
-              <span
-                className="tilt-glare pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                aria-hidden="true"
+                className="h-auto w-full"
               />
             </div>
 
             <p className="absolute -bottom-4 left-1/2 hidden w-max -translate-x-1/2 items-center gap-2 rounded-full border border-border-subtle bg-background-secondary px-4 py-2 lg:flex">
               <span
-                className="status-dot h-2 w-2 shrink-0 rounded-full bg-accent-primary shadow-[0_0_10px_rgba(245,158,11,0.7)]"
+                className="h-2 w-2 shrink-0 rounded-full bg-accent-primary"
                 aria-hidden="true"
               />
               <span className="font-mono text-xs text-text-secondary">
                 Currently · SDE @ Princeton IT Services
               </span>
             </p>
-          </Tilt>
+          </div>
 
           {/* Beside the portrait on phones, so the photo never floats next to empty space */}
           <p className="flex items-start gap-2 pb-1 font-mono text-xs leading-relaxed text-text-secondary lg:hidden">
             <span
-              className="status-dot mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent-primary shadow-[0_0_10px_rgba(245,158,11,0.7)]"
+              className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent-primary"
               aria-hidden="true"
             />
             Currently · SDE @ Princeton IT Services

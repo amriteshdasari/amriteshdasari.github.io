@@ -10,7 +10,7 @@ const AboutSection = () => (
       <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
         {/* Bio */}
         <div className="space-y-7">
-          <p className="drop-cap text-lg leading-relaxed text-text-secondary">
+          <p className="text-lg leading-relaxed text-text-secondary">
             Most of what I build is backend: systems that keep working when things go wrong and,
             increasingly, the AI features that live inside them. My day-to-day is TypeScript and
             Python on Azure — Next.js and Flask services, Postgres and Snowflake underneath,

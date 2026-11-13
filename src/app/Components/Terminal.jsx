@@ -409,7 +409,7 @@ const Terminal = ({ onClose }) => {
         aria-modal="true"
         aria-label="Terminal"
         onKeyDown={onPanelKeyDown}
-        className="flex h-[min(34rem,72dvh)] w-full max-w-2xl flex-col overflow-hidden rounded-xl border border-border bg-background-secondary shadow-[0_30px_80px_-20px_rgba(0,0,0,0.9),0_0_0_1px_rgba(245,158,11,0.08)]"
+        className="flex h-[min(34rem,72dvh)] w-full max-w-2xl flex-col overflow-hidden rounded-xl border border-border bg-background-secondary shadow-2xl"
         initial={{ opacity: 0, y: 16, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 8, scale: 0.98 }}
@@ -417,11 +417,6 @@ const Terminal = ({ onClose }) => {
       >
         <div className="flex items-center justify-between border-b border-border-subtle bg-background-tertiary/60 py-1 pl-4 pr-1">
           <div className="flex items-center gap-3">
-            <span className="flex gap-1.5" aria-hidden="true">
-              <span className="h-2.5 w-2.5 rounded-full bg-accent-secondary" />
-              <span className="h-2.5 w-2.5 rounded-full bg-accent-primary/60" />
-              <span className="h-2.5 w-2.5 rounded-full bg-accent-primary/25" />
-            </span>
             <span className="font-mono text-xs text-text-tertiary">visitor@mad: ~</span>
           </div>
           <button
