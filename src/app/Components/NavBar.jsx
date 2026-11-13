@@ -90,7 +90,7 @@ const NavBar = () => {
                 <Link
                   href={item.href}
                   aria-current={active ? 'location' : undefined}
-                  className={`group flex items-baseline gap-1.5 text-sm font-medium tracking-wide transition-colors duration-300 ${
+                  className={`group flex items-baseline gap-1.5 py-2 text-sm font-medium tracking-wide transition-colors duration-300 ${
                     active ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary'
                   }`}
                 >
@@ -106,7 +106,7 @@ const NavBar = () => {
                 {active && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className="absolute -bottom-1.5 left-0 right-0 h-0.5 rounded-full bg-accent-primary"
+                    className="absolute bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-accent-primary"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}

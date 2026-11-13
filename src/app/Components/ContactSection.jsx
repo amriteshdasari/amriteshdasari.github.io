@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import { WordReveal } from './TextReveal';
-import { EMAIL, LINKEDIN_URL, RESUME_URL } from '../lib/content';
+import { EMAIL, GITHUB_URL, LINKEDIN_URL, RESUME_URL } from '../lib/content';
 
 const LINKS = [
+  { label: 'GitHub', href: GITHUB_URL },
   { label: 'LinkedIn', href: LINKEDIN_URL },
   { label: 'Résumé', href: RESUME_URL },
 ];
@@ -65,14 +66,14 @@ const ContactSection = () => (
           {EMAIL}
         </a>
 
-        <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-mono text-sm">
+        <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 font-mono text-sm">
           {LINKS.map((link) => (
             <li key={link.label}>
               <a
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-text-secondary transition-colors duration-300 hover:text-accent-primary"
+                className="inline-flex min-h-11 items-center px-2 text-text-secondary transition-colors duration-300 hover:text-accent-primary"
               >
                 {link.label} <span aria-hidden="true">↗</span>
               </a>
