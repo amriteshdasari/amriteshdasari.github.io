@@ -137,6 +137,18 @@ export default function ProjectsPage() {
                         </li>
                       ))}
                     </ul>
+
+                    {item.url && (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-5 inline-flex items-center gap-2 font-mono text-sm text-accent-primary transition-colors duration-300 hover:text-text-primary"
+                      >
+                        Visit {new URL(item.url).hostname.replace(/^www\./, '')}
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
                   </article>
                 ))}
               </div>
