@@ -100,6 +100,7 @@ export const TIMELINE = [
 
 // Newest first. Every item `id` doubles as its anchor on /projects.
 // `period` is optional; entries without one render undated.
+// `url` is optional: a public product site, linked under the entry.
 export const ARCHIVE = [
   {
     id: 'princeton-it-services',
@@ -142,6 +143,7 @@ export const ARCHIVE = [
         name: 'Business Card Intelligence',
         context: 'Product · mobile-first lead capture and follow-up CRM',
         period: 'Apr — Oct 2026',
+        url: 'https://bizcardiq.com',
         stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Document Intelligence', 'Azure OpenAI', 'Microsoft Graph', 'Entra ID', 'Dynamics 365', 'Bicep', 'Vitest'],
         bullets: [
           'A mobile-first app that photographs a business card, extracts the lead with Azure Document Intelligence, normalizes it with Azure OpenAI, and stores a canonical record in PostgreSQL, with bulk PDF uploads, LinkedIn QR scans, memory photos, and an offline outbox.',
@@ -158,6 +160,7 @@ export const ARCHIVE = [
         name: 'Microsoft 365 Posture & Operations Platform',
         context: 'Product · three-service platform',
         period: 'Feb — Nov 2026',
+        url: 'https://www.princetonsentinel.com',
         stack: ['Next.js', 'TypeScript', 'Python', 'Flask', 'PostgreSQL', 'Microsoft Graph', 'Entra ID', 'Dataverse', 'Azure OpenAI', 'Key Vault', 'Docker', 'Azure'],
         bullets: [
           'A three-service platform: a Next.js web app for dashboards and admin workflows, a Python/Flask worker for Microsoft Graph ingestion and scheduled jobs, and Postgres as the system of record with materialized-view reporting.',
