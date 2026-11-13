@@ -371,6 +371,19 @@ export const ARCHIVE_INDEX = Object.fromEntries(
   ARCHIVE.flatMap((group) => group.items.map((item) => [item.id, item]))
 );
 
+// How many archive projects list each technology. Drives the archive filter
+// and decides which skills on the home page link into it.
+export const STACK_COUNTS = ARCHIVE.reduce((counts, group) => {
+  group.items.forEach((item) =>
+    item.stack.forEach((tech) => {
+      counts[tech] = (counts[tech] ?? 0) + 1;
+    })
+  );
+  return counts;
+}, {});
+
+export const stackHref = (tech) => `/projects/?stack=${encodeURIComponent(tech)}`;
+
 // Home-page picks: one per strength, each linking to its full archive entry.
 export const FEATURED = [
   {

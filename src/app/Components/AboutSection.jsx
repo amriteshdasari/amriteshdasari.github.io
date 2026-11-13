@@ -1,8 +1,9 @@
 import ChapterHeading from './ChapterHeading';
+import KafkaQueue from './KafkaQueue';
 import { FOCUS_AREAS } from '../lib/content';
 
 const AboutSection = () => (
-  <section id="about" className="relative scroll-mt-24 py-24 lg:py-32">
+  <section id="about" className="relative scroll-mt-24 py-20 lg:py-28">
     <div className="mx-auto w-full max-w-7xl px-6 lg:px-12">
       <ChapterHeading number="01" kicker="About" title="Systems that survive the real world." />
 
@@ -33,6 +34,8 @@ const AboutSection = () => (
               — a personal motto
             </footer>
           </blockquote>
+
+          <KafkaQueue />
         </div>
 
         {/* Focus areas */}

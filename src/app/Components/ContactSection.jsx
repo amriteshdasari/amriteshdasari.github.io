@@ -1,4 +1,5 @@
-import Image from 'next/image';
+import CopyEmail from './CopyEmail';
+import WavingMemoji from './WavingMemoji';
 import { WordReveal } from './TextReveal';
 import { EMAIL, GITHUB_URL, LINKEDIN_URL, RESUME_URL } from '../lib/content';
 
@@ -9,14 +10,7 @@ const LINKS = [
 ];
 
 const ContactSection = () => (
-  <section id="contact" className="relative scroll-mt-24 overflow-x-clip pt-24 lg:pt-32">
-    <span
-      className="text-ghost pointer-events-none absolute left-1/2 top-12 -translate-x-1/2 select-none font-display text-[22vw] italic leading-none lg:text-[16rem]"
-      aria-hidden="true"
-    >
-      fin
-    </span>
-
+  <section id="contact" className="relative scroll-mt-24 overflow-x-clip pt-20 lg:pt-28">
     <div className="relative mx-auto w-full max-w-4xl px-6 lg:px-12">
       <div className="flex w-full flex-col items-center gap-7 text-center">
         <p className="flex items-center gap-4 font-mono text-xs uppercase tracking-[0.3em]">
@@ -27,19 +21,18 @@ const ContactSection = () => (
         </p>
 
         <div className="relative">
+          {/* "fin" peeks out from behind the memoji instead of crossing the kicker */}
+          <span
+            className="text-ghost pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-display text-[42vw] italic leading-none sm:text-[13rem]"
+            aria-hidden="true"
+          >
+            fin
+          </span>
           <div
             className="absolute -inset-5 rounded-full bg-linear-to-br from-accent-primary/20 via-accent-primary/5 to-transparent blur-2xl"
             aria-hidden="true"
           />
-          <div className="relative h-40 w-40 overflow-hidden rounded-full border border-border-subtle bg-background-secondary sm:h-48 sm:w-48">
-            <Image
-              src="/images/Himemoji.png"
-              alt="Memoji of Amritesh waving"
-              fill
-              sizes="192px"
-              className="object-contain"
-            />
-          </div>
+          <WavingMemoji />
         </div>
 
         <h2 className="font-display text-4xl font-semibold tracking-tight text-balance text-text-primary sm:text-5xl lg:text-6xl">
@@ -65,6 +58,10 @@ const ContactSection = () => (
           </svg>
           {EMAIL}
         </a>
+
+        <div className="-mt-3">
+          <CopyEmail />
+        </div>
 
         <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 font-mono text-sm">
           {LINKS.map((link) => (

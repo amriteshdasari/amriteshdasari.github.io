@@ -4,7 +4,7 @@ import { ARCHIVE_INDEX, FEATURED, PROJECT_COUNT } from '../lib/content';
 
 // Editorial index of flagship projects. Each row opens the full entry in the archive.
 const FeaturedProjects = () => (
-  <section id="projects" className="relative scroll-mt-24 py-24 lg:py-32">
+  <section id="projects" className="relative scroll-mt-24 py-20 lg:py-28">
     <div className="mx-auto w-full max-w-7xl px-6 lg:px-12">
       <ChapterHeading
         number="04"

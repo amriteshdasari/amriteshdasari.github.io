@@ -1,5 +1,7 @@
-// Atmosphere layer: a warm amber glow from the top of the page and a static
-// film grain. Pure CSS — nothing animates and nothing waits on JavaScript.
+import Spotlight from './Spotlight';
+
+// Atmosphere layer: a warm amber glow from the top of the page, a static film
+// grain, and a faint spotlight that follows the mouse on desktop.
 const BackgroundFX = () => (
   <>
     <div
@@ -10,6 +12,7 @@ const BackgroundFX = () => (
       }}
       aria-hidden="true"
     />
+    <Spotlight />
     <div className="grain pointer-events-none fixed inset-0 z-0 opacity-[0.045]" aria-hidden="true" />
   </>
 );

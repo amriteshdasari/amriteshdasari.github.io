@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Tilt from './Tilt';
 import { CAREER_START, EMAIL, PROJECT_COUNT, RESUME_URL } from '../lib/content';
 
 const MS_PER_YEAR = 365.25 * 24 * 60 * 60 * 1000;
@@ -20,9 +21,9 @@ const HeroSection = () => (
     className="relative flex min-h-svh items-center pt-24 pb-16 scroll-mt-24 lg:pt-32"
   >
     <div className="mx-auto w-full max-w-7xl px-6 lg:px-12">
-      <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+      <div className="grid w-full grid-cols-1 items-center gap-10 md:grid-cols-12 lg:gap-12">
         {/* Copy */}
-        <div className="space-y-7 lg:col-span-7">
+        <div className="space-y-7 md:col-span-7">
           <p
             className="enter-rise flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-text-tertiary"
             style={delay(0)}
@@ -33,7 +34,7 @@ const HeroSection = () => (
             </span>
           </p>
 
-          <h1 className="font-display text-5xl font-semibold leading-[1.05] tracking-tight text-text-primary sm:text-6xl xl:text-7xl">
+          <h1 className="font-display text-5xl font-semibold leading-[1.05] tracking-tight text-text-primary sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl">
             <span className="block overflow-hidden pb-[0.08em] mb-[-0.08em]">
               <span className="enter-mask" style={delay(80)}>
                 Mohan Amritesh
@@ -101,10 +102,10 @@ const HeroSection = () => (
 
         {/* Portrait — first on phones so the face and name share the opening screen */}
         <div
-          className="enter-rise order-first flex flex-col items-start lg:order-none lg:col-span-5 lg:items-end"
+          className="enter-rise order-first flex items-end gap-5 md:order-none md:col-span-5 md:flex-col md:gap-6"
           style={delay(200)}
         >
-          <div className="group relative w-48 sm:w-60 lg:w-full lg:max-w-[420px]">
+          <Tilt className="group relative w-36 shrink-0 sm:w-48 md:w-full md:max-w-[420px]">
             <div
               className="absolute -inset-3 rounded-3xl bg-linear-to-br from-accent-primary/25 via-accent-primary/5 to-transparent blur-2xl"
               aria-hidden="true"
@@ -127,22 +128,28 @@ const HeroSection = () => (
                 preload
                 className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.03]"
               />
+              {/* Glare that follows the pointer; Tilt sets --glare-x / --glare-y */}
+              <span
+                className="tilt-glare pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                aria-hidden="true"
+              />
             </div>
 
             <p className="absolute -bottom-4 left-1/2 hidden w-max -translate-x-1/2 items-center gap-2 rounded-full border border-border-subtle bg-background-secondary px-4 py-2 lg:flex">
               <span
-                className="h-2 w-2 shrink-0 rounded-full bg-accent-primary shadow-[0_0_10px_rgba(245,158,11,0.7)]"
+                className="status-dot h-2 w-2 shrink-0 rounded-full bg-accent-primary shadow-[0_0_10px_rgba(245,158,11,0.7)]"
                 aria-hidden="true"
               />
               <span className="font-mono text-xs text-text-secondary">
                 Currently · SDE @ Princeton IT Services
               </span>
             </p>
-          </div>
+          </Tilt>
 
-          <p className="mt-5 flex items-center gap-2 font-mono text-xs text-text-secondary lg:hidden">
+          {/* Beside the portrait on phones, so the photo never floats next to empty space */}
+          <p className="flex items-start gap-2 pb-1 font-mono text-xs leading-relaxed text-text-secondary lg:hidden">
             <span
-              className="h-2 w-2 shrink-0 rounded-full bg-accent-primary shadow-[0_0_10px_rgba(245,158,11,0.7)]"
+              className="status-dot mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent-primary shadow-[0_0_10px_rgba(245,158,11,0.7)]"
               aria-hidden="true"
             />
             Currently · SDE @ Princeton IT Services
